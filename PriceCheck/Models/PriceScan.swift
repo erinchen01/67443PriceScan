@@ -11,8 +11,16 @@ struct PriceScan: Identifiable, Codable, Comparable {
   
   var id = UUID()  // To conform to Identifiable protocol
   // Additional properties, etc.
+  let item: String
+  let price: Double
+  let date: String
   
-
+  enum CodingKeys : String, CodingKey {
+    case id = "id"
+    case item = "item"
+    case price = "price"
+    case date = "date"
+  }
   
   
   
@@ -27,7 +35,7 @@ struct PriceScan: Identifiable, Codable, Comparable {
   
   // To conform to Comparable protocol
   static func < (lhs: PriceScan, rhs: PriceScan) -> Bool {
-    
+    return lhs.price < rhs.price
   }
   
   // MARK: Example for SwiftUI
